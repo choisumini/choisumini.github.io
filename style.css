@@ -1,0 +1,349 @@
+@charset "UTF-8";
+
+/* 첨부된 폰트를 로컬에서 직접 불러옵니다. */
+@font-face {
+  font-family: "Post No Bills Colombo";
+  src: url("../fonts/post-no-bills-colombo.extrabold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 800 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter 28pt";
+  src: url("../fonts/Inter_28pt-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter 24pt";
+  src: url("../fonts/Inter_24pt-Medium.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* ------------------------------
+   기본 설정
+------------------------------ */
+:root {
+  --black: #000000;
+  --cream: #FEF8E9;
+  --content-width: 1920px;
+  --bar-height: 60px;
+  --post-font: "Post No Bills Colombo", "Arial Narrow", sans-serif;
+  --body-font: "Inter", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--black);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--black);
+  color: var(--black);
+  font-family: var(--body-font);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+.page {
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+/* ------------------------------
+   공통 섹션 / 상단 검정 바
+------------------------------ */
+.story-panel {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.section-bar {
+  width: 100%;
+  height: var(--bar-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--black);
+  color: #ffffff;
+}
+
+.section-bar__title {
+  margin: 0;
+  font-family: var(--post-font);
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-align: center;
+}
+
+/* ------------------------------
+   첫 번째 패널: 메인 타이틀
+------------------------------ */
+.panel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1020;
+  overflow: hidden;
+}
+
+.panel--cream {
+  background: var(--cream);
+}
+
+.sweater {
+  position: absolute;
+  height: auto;
+  object-fit: contain;
+}
+
+.sweater--intro {
+  width: 43.177083cqw; /* 829px at 1920px */
+  height: 38.802083cqw; /* 745px at 1920px */
+  left: 50%;
+  bottom: 13.177083cqw; /* 253px: previous position raised by 10px */
+  transform: translateX(-50%);
+}
+
+.main-title {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: auto;
+  bottom: 3.489583cqw; /* 1920px 기준 57px: 글자 실제 하단 획에서 배경 끝까지 약 83px */
+  margin: 0;
+  font-family: var(--post-font);
+  font-size: 150px;
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ------------------------------
+   두 번째 / 세 번째 패널: 말풍선
+------------------------------ */
+.panel--prompt {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.sweater--prompt {
+  width: 43.177083cqw; /* 829px at 1920px */
+  height: 38.802083cqw; /* 745px at 1920px */
+  left: 50%;
+  bottom: 13.177083cqw; /* 253px: previous position raised by 10px */
+  transform: translateX(-50%);
+}
+
+.speech-bubble {
+  position: absolute;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%);
+  width: 41.666667cqw; /* 800px */
+  height: 10.416667cqw; /* 200px */
+  min-height: 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  background: #fffefd;
+  color: #333333;
+  font-family: "Inter 28pt", var(--body-font);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.45;
+  text-align: center;
+}
+
+/* 두 번째와 세 번째 말풍선은 동일한 24px 크기 사용 */
+.story-panel:nth-of-type(3) .speech-bubble {
+  font-family: "Inter 28pt", var(--body-font);
+  font-size: 24px;
+}
+
+/* ------------------------------
+   네 번째 패널: 라벨 클로즈업
+------------------------------ */
+.label-panel {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1920 / 1020;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--cream);
+  background-image: url("../images/2_background.png");
+  background-size: 113.34% auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.label-artwork {
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 56.927083cqw; /* 1093px at 1920px, original ratio retained */
+  height: auto; /* 원본 이미지 비율 유지 */
+  object-fit: contain;
+}
+
+.label-caption {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  bottom: 3.5%;
+  transform: translateX(-50%);
+  width: 41.666667cqw; /* 800px */
+  height: 10.416667cqw; /* 200px */
+  margin: 0;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  background: #fffefd;
+  color: #222222;
+  font-family: "Inter 24pt", var(--body-font);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: center;
+}
+
+/* ------------------------------
+   반응형
+------------------------------ */
+@media (max-width: 900px) {
+  :root {
+    --bar-height: min(60px, 3.125cqw);
+  }
+
+  .section-bar__title {
+    font-size: min(26px, 1.354167cqw);
+  }
+
+
+
+
+  .main-title {
+    top: auto;
+    bottom: 3.489583cqw;
+    font-size: min(150px, 7.8125cqw);
+  }
+
+
+
+}
+
+@media (max-width: 520px) {
+
+
+
+  .main-title {
+    top: auto;
+    bottom: 3.489583cqw;
+    font-size: min(150px, 7.8125cqw);
+  }
+
+
+
+
+}
+
+/* ===== 스크롤 스토리 인터랙션: 기존 규칙은 위에서 유지 ===== */
+.scroll-story { position: relative; height: 600vh; }
+.sticky-screen { position: sticky; top: 0; width: 100%; height: 100vh; overflow: hidden; isolation: isolate; background: var(--cream); }
+.sticky-screen > .section-bar { position: absolute; top: 0; left: 0; z-index: 100; width: 100%; height: var(--bar-height); }
+.sticky-screen > .story-panel { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; visibility: hidden; }
+.sticky-screen > .story-panel.is-visible { visibility: visible; }
+.sticky-screen > .story-panel .panel,
+.sticky-screen > .story-panel .label-panel { position: absolute; top: var(--bar-height); left: 0; width: 100%; height: calc(100% - var(--bar-height)); aspect-ratio: auto; }
+.sticky-screen .speech-bubble,
+.sticky-screen .label-caption { opacity: 0; will-change: transform, opacity; }
+/* 배경색만 80%: 글자와 테두리는 불투명하게 유지 */
+.sticky-screen .speech-bubble,
+.sticky-screen .label-caption { background: rgba(255,254,253,.8); }
+.sticky-screen .story-panel--label .label-panel { background-color: rgba(254,248,233,.8); }
+.sticky-screen .story-panel--label .label-panel::before { content: ''; position: absolute; inset: 0; background: rgba(254,248,233,.2); pointer-events: none; }
+.sticky-screen .story-panel:nth-of-type(3) .sweater--prompt { cursor: pointer; pointer-events: auto; transform-origin: center center; will-change: transform, opacity; }
+.sticky-screen .story-panel:nth-of-type(3) .sweater--prompt:focus-visible { outline: 3px solid #222; outline-offset: 6px; }
+/* 전환 중 배경과 라벨이 동시에 나타나도록 독립 레이어로 취급 */
+.sticky-screen .story-panel--label .label-panel { background-image: none; }
+.sticky-screen .story-panel--label .label-panel::after { content: ''; position: absolute; inset: 0; background: url('../images/2_background.png') center / 113.34% auto no-repeat; opacity: var(--reveal,0); pointer-events: none; }
+.sticky-screen .story-panel--label .label-artwork { opacity: var(--reveal,0); z-index: 1; }
+.sticky-screen .story-panel--label .label-caption { z-index: 2; }
+
+/* FIX: A single persistent cream canvas, sweater, and top bar. */
+.scroll-story .sticky-screen { background: var(--cream); }
+.scroll-story .sticky-screen > .story-panel { visibility: visible !important; opacity: 1 !important; background: transparent; }
+.scroll-story .sticky-screen > .story-panel .panel { background: transparent; }
+/* First panel owns the sweater and stays rendered throughout the scroll. */
+.scroll-story .sticky-screen > .story-panel:nth-of-type(1) { z-index: 1 !important; }
+.scroll-story .sticky-screen > .story-panel:nth-of-type(2) { z-index: 2 !important; }
+.scroll-story .sticky-screen > .story-panel:nth-of-type(3) { z-index: 3 !important; }
+.scroll-story .sticky-screen > .story-panel:nth-of-type(4) { z-index: 4 !important; }
+.scroll-story .sticky-screen > .section-bar { z-index: 100 !important; }
+.scroll-story .sticky-screen .sweater--prompt { display: none; }
+.scroll-story .sticky-screen .sweater--intro { pointer-events: none; transform-origin: center center; will-change: transform, opacity; }
+.scroll-story .sticky-screen .story-panel--intro { pointer-events: none; }
+.scroll-story .sticky-screen .story-panel--intro .sweater--intro { pointer-events: auto; }
+.scroll-story .sticky-screen .story-panel--label .label-panel { background: transparent !important; }
+.scroll-story .sticky-screen .story-panel--label .label-panel::before { display: none; }
+.scroll-story .sticky-screen .story-panel--label .label-panel::after { z-index: 0; }
+.scroll-story .sticky-screen .story-panel--label .label-artwork { z-index: 1; }
+.scroll-story .sticky-screen .speech-bubble,
+.scroll-story .sticky-screen .label-caption { background: rgba(255,254,253,.8); }
+
+/* CRITICAL: overflow:hidden on .page prevented position:sticky from sticking.
+   clip clips horizontal overflow without creating a scroll container. */
+.page { overflow: clip; }
+
+/* PATCH: 2~3번 말풍선 이동 중 글자와 테두리는 항상 100% */
+.scroll-story .sticky-screen .speech-bubble,
+.scroll-story .sticky-screen .label-caption {
+  opacity: 1;
+  background-color: rgba(255,254,253,.8);
+  pointer-events: none;
+}
+/* 4번째 패널은 완전히 투명한 레이어에서 시작: 배경과 라벨 동일 타이밍 */
+.scroll-story .sticky-screen .story-panel--label .label-panel::after {
+  opacity: var(--reveal,0);
+}
+.scroll-story .sticky-screen .story-panel--label .label-artwork {
+  opacity: var(--reveal,0);
+}
+/* 앞의 패널에 가려지지 않고 3번째 구간에서 클릭 가능 */
+.scroll-story .sticky-screen .story-panel--intro .panel { overflow: visible; }
+.scroll-story .sticky-screen .story-panel--intro .sweater--intro { z-index: 2; }
+.scroll-story .sticky-screen .story-panel--intro .main-title { pointer-events: none; }
+
+/* 4번째 말풍선에 2~3번째와 비슷한 스크롤 이동 거리 확보 (기존 구간 보존) */
+.scroll-story { height: 700vh; }
